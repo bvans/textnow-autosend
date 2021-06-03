@@ -20,7 +20,7 @@
 
   try {
     browser = await puppeteer.launch({
-      headless: false,
+      headless: true
     });
     page = await browser.newPage();
 
@@ -80,9 +80,10 @@
 
     if (page) {
       await page.screenshot({path: "./error-screenshot.jpg", type: "jpeg"});
+      const base64 = await page.screenshot({encoding: "base64"})
+      console.log("error page: data:image/png;base64,", base64)
     }
-    const base64 = await page.screenshot({encoding: "base64"})
-    console.log("error page: ", base64)
+
 
     if (browser) {
       await browser.close();
