@@ -21,10 +21,6 @@
   try {
     browser = await puppeteer.launch({
       headless: false,
-      args: [
-        '--use-fake-ui-for-media-stream',
-        '--use-file-for-fake-audio-capture=/Users/aaron/Downloads/output.wav'
-      ],
     });
     page = await browser.newPage();
 
